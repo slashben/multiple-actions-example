@@ -1,0 +1,24 @@
+name: 'Start Script'
+description: 'Runs the start shell script'
+inputs:
+  working-directory:
+    description: 'Working directory to run the script in'
+    required: false
+    default: '.'
+outputs:
+  success-message:
+    description: 'A success message if the script runs successfully'
+    value: 'Script executed successfully'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set working directory
+      shell: bash
+      run: echo "Changing working directory to ${{ inputs.working-directory }}"
+    - name: Run shell script
+      shell: bash
+      run: |
+        echo "Writing date to file"
+        date > date.txt
+

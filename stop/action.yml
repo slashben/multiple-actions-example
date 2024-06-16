@@ -1,0 +1,24 @@
+name: 'Stop Script'
+description: 'Runs the stop shell script'
+inputs:
+  working-directory:
+    description: 'Working directory to run the script in'
+    required: false
+    default: '.'
+outputs:
+  success-message:
+    description: 'A success message if the script runs successfully'
+    value: 'Script executed successfully'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set working directory
+      shell: bash
+      run: echo "Changing working directory to ${{ inputs.working-directory }}"
+    - name: Run shell script
+      shell: bash
+      run: |
+        START_TIME=$(cat date.txt)
+        echo "Executing stop script, the start script ran at $START_TIME"
+

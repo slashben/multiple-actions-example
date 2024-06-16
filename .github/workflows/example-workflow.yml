@@ -1,0 +1,12 @@
+name: Main Branch Workflow
+on:
+  push:
+    branches:
+      - main
+jobs:
+  multi-action-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./start
+      - uses: ./stop
