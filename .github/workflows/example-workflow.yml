@@ -7,6 +7,7 @@ jobs:
   multi-action-job:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: ./start
-      - uses: ./stop
+      - uses: slashben/multiple-actions-example/start@main
+        name: Start Script
+      - uses: slashben/multiple-actions-example/stop@main
+        name: Stop Script
